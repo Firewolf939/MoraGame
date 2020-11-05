@@ -48,7 +48,7 @@
     </LinearLayout>
 
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/bottom_layout"
@@ -59,6 +59,7 @@
             android:id="@+id/grid_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:columnCount="2"
             android:rowCount="2"
             android:useDefaultMargins="true">
@@ -97,5 +98,27 @@
                 android:src="@drawable/paper" />
         </GridLayout>
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/count_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="8dp"
+            android:textSize="@dimen/super_large_font_size"
+            android:textColor="#000000"
+            android:text="1:000" />
+
+        <TextView
+            android:id="@+id/hart_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="8dp"
+            android:textColor="#FF0000"
+            android:textSize="@dimen/midden_font_size"
+            android:text="❤❤❤"
+            />
+
+    </FrameLayout>
 </RelativeLayout>

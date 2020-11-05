@@ -44,4 +44,12 @@ public class Player {
     public void setLife(int life) {
         this.life = life;
     }
+
+    public String getHart(){
+        String hart ="";
+        for (int i =0; i<life;i++){
+            hart +='❤';
+        }
+        return hart;
+    }
 }

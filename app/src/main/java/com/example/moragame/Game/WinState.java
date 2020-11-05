@@ -10,10 +10,10 @@ public enum WinState {
         if (player == computer){
             return WinState.EVEN;
         }
-        if (player == Mora.SCISSOR && computer == Mora.PAPER){
+        if ((player == Mora.SCISSOR && computer == Mora.PAPER) ||computer==Mora.NONE){
             return WinState.PLAYER_WIN;
         }
-        if (computer == Mora.SCISSOR && player == Mora.PAPER){
+        if ((computer == Mora.SCISSOR && player == Mora.PAPER) ||player==Mora.NONE){
             return WinState.COMPUTER_WIN;
         }
         if (player.ordinal() > computer.ordinal()){
