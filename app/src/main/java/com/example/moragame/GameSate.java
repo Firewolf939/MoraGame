@@ -5,5 +5,6 @@ public enum GameSate {
     START_GAME,
     COMPUTER_ROUND,
     PLAYER_ROUND,
-    CHECK_WIN_STATE;
+    CHECK_WIN_STATE,
+    GAME_OVER;
 }
