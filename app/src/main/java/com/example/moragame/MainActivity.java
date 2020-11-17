@@ -1,5 +1,6 @@
 package com.example.moragame;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,6 +13,8 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -63,6 +66,7 @@ Runnable{
     private int[] soundResId;
     private final int SOUND_CORRECT = 0;
     private final int SOUND_WRONG = 1;
+    private boolean soundOn;
 
     private final String TAG = "MainActivity";
 
@@ -75,6 +79,40 @@ Runnable{
         findViews();
         initGame();
         initSound();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        if (id == item.getItemId()){
+
+            soundOn = !soundOn;
+
+            if (soundOn){
+                item.setTitle(getResources().getString(R.string.sound_on));
+            }else {
+                item.setTitle(getResources().getString(R.string.sound_off));
+            }
+            return super.onOptionsItemSelected(item);
+        }else if (id ==R.id.about){
+            new AlertDialog.Builder(this)
+                    .setTitle(getResources().getString(R.string.about))
+                    .setMessage(getResources().getString(R.string.app_name)+"\n"+
+                            "版本號:1.0\n"+"作者:DD")
+                    .setNegativeButton(R.string.ok, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                        }
+                    }).create().show();
+        };
+        return super.onOptionsItemSelected(item);
     }
 
     public void save(){
@@ -115,13 +153,15 @@ Runnable{
     }
 
     public void initSound(){
+        soundOn=true;
         soundPool = new SoundPool.Builder().setMaxStreams(10).build();
         soundResId = new int[]{soundPool.load(this,R.raw.correct_ogg,1),
         soundPool.load(this,R.raw.wrong,1)};
     }
 
     public void playSound(int id){
-        soundPool.play(soundResId[id],1,1,1,0,1);
+        if (soundOn){
+            soundPool.play(soundResId[id],1,1,1,0,1);};
     }
 
     public void startGame(){

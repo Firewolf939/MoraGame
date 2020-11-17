@@ -17,4 +17,7 @@
     <string name="cancel">取消</string>
     <string name="hart">❤❤❤</string>
     <string name="message">訊息!</string>
+    <string name="sound_on">音效:開</string>
+    <string name="sound_off">音效:關</string>
+    <string name="about">關於</string>
 </resources>
